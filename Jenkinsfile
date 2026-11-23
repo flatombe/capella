@@ -205,7 +205,7 @@ spec:
 	     	}
 	    }
 	    
-    	stage('Run tests') {
+    	stage('Run JUnit tests') {
     		
         	steps {
         		script {
@@ -275,6 +275,32 @@ spec:
 			}
 		}
 		
+		stage('Run RCPTT tests') {
+			steps {
+				script {
+					wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+						withEnv(['MAVEN_OPTS=-Xmx1g']) {
+							sh "mvn -Prcptt test"
+						}
+					}
+				}
+			}
+			post {
+				always {
+					dir('tests/plugins/org.polarsys.capella.test.rcptt') {
+						archiveArtifacts(
+							artifacts: 'target/results/**, target/surefire-reports/*.xml',
+							allowEmptyArchive: true
+						)
+						junit(
+							testResults: 'target/surefire-reports/*.xml',
+							allowEmptyResults: false
+						)
+					}
+				}
+			}
+		}
+
 		stage('Sonar') {
 			steps {
 				script {
