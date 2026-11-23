@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2016, 2026 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -173,6 +173,10 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.rcptt</groupId>
+				<artifactId>rcptt-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -282,6 +286,24 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.rcptt</groupId>
+					<artifactId>rcptt-maven-plugin</artifactId>
+					<version>${rcptt-version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<runner>
+							<version>${rcptt-runner-version}</version>
+							<vmArgs>
+								<vmArg>-Xms256m,-Xmx3000m</vmArg>
+								<vmArg>-Dorg.eclipse.rcptt.runner.returnTestFailure=true</vmArg>
+							</vmArgs>
+						</runner>
+						<aut>
+							<explicit>${maven.multiModuleProjectDirectory}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].zip</explicit>
+						</aut>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -354,6 +376,19 @@
 				<module>tests/features/org.polarsys.capella.test.feature</module>
 				<module>tests/plugins</module>
 				<module>releng/plugins/org.polarsys.capella.test.site</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>rcptt</id>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>rcptt-releases</id>
+					<name>RCPTT Maven repository</name>
+					<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+				</pluginRepository>
+			</pluginRepositories>
+			<modules>
+				<module>tests/plugins/org.polarsys.capella.test.rcptt</module>
 			</modules>
 		</profile>
 		<profile>
