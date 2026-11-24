@@ -7,8 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _7vSWkGgGEem-1Zn8MbYLuw
 Runtime-Version: 2.7.4.202603251526
-Save-Time: 11/23/26, 5:51 PM
-Tags: skipExecution
+Save-Time: 11/24/26, 3:05 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -48,25 +47,25 @@ get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]
 
 // check history button status
 with [get-view "Semantic Browser"] {
-    get-button "Forward (M1+Right)" | get-property enablement | equals false | verify-true
-    get-button "Back (M1+Left)" | get-property enablement | equals true | verify-true
+    get-button "Forward.*" | get-property enablement | equals false | verify-true
+    get-button "Back.*" | get-property enablement | equals true | verify-true
     get-tree -after [get-label "Current Element"] | get-item -path "Entertain with IFE System" | get-property caption 
         | equals "Entertain with IFE System" | verify-true
 }
 
 // navigate backwards
-get-view "Semantic Browser" | get-button "Back (M1+Left)" | click
+get-view "Semantic Browser" | get-button "Back.*" | click
 
 // check history button status
 with [get-view "Semantic Browser"] {
     get-tree -after [get-label "Current Element"] | get-item -path "Root Logical Function" | get-property caption 
         | equals "Root Logical Function" | verify-true
-    get-button "Back (M1+Left)" | get-property enablement | equals false | verify-true
-    get-button "Forward (M1+Right)" | get-property enablement | equals true | verify-true
+    get-button "Back.*" | get-property enablement | equals false | verify-true
+    get-button "Forward.*" | get-property enablement | equals true | verify-true
 }
 
 // navigate forward
-get-view "Semantic Browser" | get-button "Forward (M1+Right)" | click
+get-view "Semantic Browser" | get-button "Forward.*" | click
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
     -path "Entertain with IFE System" | get-property caption | equals "Entertain with IFE System" | verify-true
     
@@ -99,31 +98,31 @@ get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]
 
 // check history button status
 with [get-view "Semantic Browser"] {
-    get-button "Back (M1+Left)" | get-property enablement | equals true | verify-true
-    get-button "Forward (M1+Right)" | get-property enablement | equals false | verify-true
+    get-button "Back.*" | get-property enablement | equals true | verify-true
+    get-button "Forward.*" | get-property enablement | equals false | verify-true
     get-tree -after [get-label "Current Element"] | get-item -path "Command Airline-Imposed Video Broadcast" 
         | get-property caption | equals "Command Airline-Imposed Video Broadcast" | verify-true
 }
 
 // navigate backwards
-get-view "Semantic Browser" | get-button "Back (M1+Left)" | click
+get-view "Semantic Browser" | get-button "Back.*" | click
 
 
 // check history button status
 with [get-view "Semantic Browser"] {
     get-tree -after [get-label "Current Element"] | get-item -path "Perform Cabin Management Activities" 
         | get-property caption | equals "Perform Cabin Management Activities" | verify-true
-    get-button "Back (M1+Left)" | get-property enablement | equals false | verify-true
-    get-button "Forward (M1+Right)" | get-property enablement | equals true | verify-true
+    get-button "Back.*" | get-property enablement | equals false | verify-true
+    get-button "Forward.*" | get-property enablement | equals true | verify-true
 }
 // navigate forwards
-get-view "Semantic Browser" | get-button "Forward (M1+Right)" | click
+get-view "Semantic Browser" | get-button "Forward.*" | click
 
 // check history button status
 with [get-view "Semantic Browser"] {
     get-tree -after [get-label "Current Element"] | get-item -path "Command Airline-Imposed Video Broadcast" 
         | get-property caption | equals "Command Airline-Imposed Video Broadcast" | verify-true
-    get-button "Back (M1+Left)" | get-property enablement | equals true | verify-true
-    get-button "Forward (M1+Right)" | get-property enablement | equals false | verify-true
+    get-button "Back.*" | get-property enablement | equals true | verify-true
+    get-button "Forward.*" | get-property enablement | equals false | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
