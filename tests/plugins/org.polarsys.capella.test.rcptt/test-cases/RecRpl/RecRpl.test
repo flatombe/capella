@@ -7,8 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _QblmIKj2Eee0yuaysMB3Rg
 Runtime-Version: 2.7.4.202603251526
-Save-Time: 11/23/26, 5:52 PM
-Tags: skipExecution
+Save-Time: 11/24/26, 3:03 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -588,7 +587,7 @@ with [get-editor "[SDFB] Root System Function" -index 2] {
         mouse-release 510 48 button1 524288 -height 687 -width 1042
         mouse-move 279 2 -height 687 -width 1042
     }
-    get-button "Paste the current recorded format (layout and style) to the selected diagram" | click
+    get-button "Paste the current recorded format (layout and style) to the selected diagram using a mapping based on semantic elements" | click
     get-window "Paste mode" | get-button Paste | click
     get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 260 479 -height 687 
         -width 1042
