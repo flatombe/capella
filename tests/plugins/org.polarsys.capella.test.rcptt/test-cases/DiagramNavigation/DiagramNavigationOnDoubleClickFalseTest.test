@@ -222,7 +222,7 @@ with [get-view "Project Explorer" | get-tree] {
     select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/System Analysis/Capabilities/OperationalCapability/[FS] [OAS] OperationalProcess 1 1/[FS] [OAS] OperationalProcess 1 1" | double-click
     with [get-editor "[FS] [OAS] OperationalProcess 1 1" | get-diagram -index 1 | get-edit-part -name "[FS] [OAS] OperationalProcess 1 1"] {
 	    mouse-move 74 379 -height 557 -width 1290
-	    with [get-edit-part -name " ref" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+	    with [get-edit-part -name " ref" | get-edit-part -className InteractionUseCompartmentEditPart] {
 	        mouse-move 54 7 button1 -height 48 -width 358
 	        mouse-press 54 7 button1 -height 48 -width 358
 	        mouse-release 54 7 button1 "" -height 48 -width 358
